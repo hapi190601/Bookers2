@@ -25,22 +25,22 @@
               <!--ログイン時-->
               <!--ナビ項目１-->
               <li class="nav-item">
-              <%= link_to "Home", "/", class: 'fas fa-home nav-link text-white' %>
+              <%= link_to " Home", "/", class: 'fas fa-home nav-link text-white' %>
               </li>
 
               <!--ナビ項目２-->
               <li class="nav-item">
-              <%= link_to "Users", "ぱす", class: 'fas fa-users nav-link text-white' %>
+              <%= link_to " Users", users_path, class: 'fas fa-users nav-link text-white' %>
               </li>
 
               <!--ナビ項目-->
               <li class="nav-item">
-              <%= link_to "Books", "ぱす", class: 'fas fa-book-open nav-link text-white' %>
+              <%= link_to " Books", books_path, class: 'fas fa-book-open nav-link text-white' %>
               </li>
 
               <!--ナビ項目４-->
               <li class="nav-item">
-              <%= link_to "logout", "ぱす", method: :delete, class: 'fas fa-sign-out-alt nav-link text-white' %>
+              <%= link_to " logout", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-white' %>
               </li>
 
 
@@ -49,22 +49,22 @@
               <!--未ログイン時-->
               <!--ナビ項目１-->
               <li class="nav-item">
-              <%= link_to "Home", "/", class: 'fas fa-home nav-link text-white' %>
+              <%= link_to " Home", "/", class: 'fas fa-home nav-link text-white' %>
               </li>
 
               <!--ナビ項目２-->
               <li class="nav-item">
-              <%= link_to "About", "ぱす", class: 'fas fa-link nav-link text-white' %>
+              <%= link_to " About", about_path, class: 'fas fa-link nav-link text-white' %>
               </li>
 
               <!--ナビ項目-->
               <li class="nav-item">
-              <%= link_to "Sign up", "ぱす", class: 'fas fa-user-plus nav-link text-white' %>
+              <%= link_to " Sign up", new_user_registration_path, class: 'fas fa-user-plus nav-link text-white' %>
               </li>
 
               <!--ナビ項目４-->
               <li class="nav-item">
-              <%= link_to "login", "ぱす", class: 'fas fa-sign-in-alt nav-link text-white' %>
+              <%= link_to " login", new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-white' %>
               </li>
 
             <% end %>

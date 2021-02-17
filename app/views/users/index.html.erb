@@ -1,0 +1,24 @@
+<%= render 'users/left_common_menu', book: @book %>
+
+
+<h1>Users</h1>
+
+  <% @users.each do |user| %>
+　<table>
+　  <thead>
+　    <tr>
+　      <th>image</th>
+　      <th>name</th>
+　      <th></th>
+　    </tr>
+　  </thead>
+
+　  <tbody>
+　    <tr>
+　      <td><%= attachment_image_tag user, :Profile_image_id, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+　      <td><%= user.name %></td>
+　      <td><%= link_to "show", user_path(user.id) %></td>
+　    </tr>
+　  </tbody>
+　</table>
+　<% end %>

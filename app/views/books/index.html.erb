@@ -1,0 +1,23 @@
+<%= render 'users/left_common_menu', book: @book %>
+
+<h1>Books</h1>
+
+  <% @books.each do |book| %>
+　<table>
+　  <thead>
+　    <tr>
+　      <th>あ</th>
+　      <th>Title</th>
+　      <th>Opinion</th>
+　    </tr>
+　  </thead>
+
+　  <tbody>
+　    <tr>
+　      <td>あ</td>
+　      <td><%= book.title %></td>
+　      <td><%= book.body %></td>
+　    </tr>
+　  </tbody>
+　</table>
+　<% end %>

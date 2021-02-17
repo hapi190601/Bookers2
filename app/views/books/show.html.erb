@@ -1,0 +1,14 @@
+<%= render 'users/left_common_menu', book: @book %>
+
+<h1>Book detail</h1>
+
+<tbody>
+  <tr>
+    <td></td>
+    <td><%= @book.title %></td>
+    <td><%= @book.body %></td>
+    <% if @book.user == current_user %>
+    <td><%= link_to "削除", book_path(@book), method: :delete %></td>
+    <% end %>
+  </tr>
+</tbody>

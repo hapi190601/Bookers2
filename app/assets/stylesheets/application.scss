@@ -23,6 +23,13 @@
   box-sizing: border-box;
 }
 
+
+
 .nav-item {
-  padding: 0.5rem 1rem;
+  padding: 4px 0;
+}
+
+
+.nav-link:hover {
+  opacity: 0.6;
 }
