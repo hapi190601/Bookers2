@@ -3,7 +3,7 @@
   <div class="user-info">
     <!--ユーザー情報-->
     <h2>User info</h2>
-    <!--ここに写真入れたい-->
+    <!--写真-->
     <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
     <table>
       <tbody>
@@ -30,11 +30,12 @@
 
   <!--新規投稿-->
   <h2>New book</h2>
-  <%= form_with model: book, url: books_path, local:true do |f| %>
+  <%= form_with model: book, local:true do |f| %>
     <h4>title</h4>
     <%= f.text_field :title %>
     <h4>Opinion</h4>
     <%= f.text_area :body %>
+    <br>
     <%= f.submit 'Create Book' %>
   <% end %>
 </div>

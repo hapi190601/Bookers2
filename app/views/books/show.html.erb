@@ -1,14 +1,25 @@
-<%= render 'users/left_common_menu', book: @book , user: @user %>
+<div class="forflex">
 
-<h1>Book detail</h1>
+  <div class="left">
+    <%= render 'users/template', book: @book ,user: @user %>
+  </div>
 
-<tbody>
-  <tr>
-    <td></td>
-    <td><%= @book.title %></td>
-    <td><%= @book.body %></td>
-    <% if @book.user == current_user %>
-    <td><%= link_to "削除", book_path(@book), method: :delete %></td>
-    <% end %>
-  </tr>
-</tbody>
+  <div class="right">
+    <h1>Book detail</h1>
+
+    <tbody>
+      <tr>
+        <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+        <td><%= @book.title %></td>
+        <td><%= @book.body %></td>
+        <% if @book.user == current_user %>
+        <td><%= link_to "Edit", edit_book_path %></td>
+        <td><%= link_to "Destroy", book_path(@book.id), method: :delete %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </div>
+
+</div>
+
+

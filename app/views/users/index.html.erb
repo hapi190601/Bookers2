@@ -1,23 +1,30 @@
-<!-- 共通部分の読み込み入れる(現在エラー中)-->
+<div class="forflex">
 
-<h1>Users</h1>
+  <div class="left">
+    <%= render 'users/template', book: @book ,user: @user %>
+  </div>
 
-  <% @users.each do |user| %>
-　<table>
-　  <thead>
-　    <tr>
-　      <th>image</th>
-　      <th>name</th>
-　      <th></th>
-　    </tr>
-　  </thead>
+  <div class="right">
+    <h1>Users</h1>
 
-　  <tbody>
-　    <tr>
-        <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
-　      <td><%= user.name %></td>
-　      <td><%= link_to "show", user_path(user.id) %></td>
-　    </tr>
-　  </tbody>
-　</table>
-　<% end %>
+    <% @users.each do |user| %>
+  　<table>
+  　  <thead>
+  　    <tr>
+  　      <th>image</th>
+  　      <th>name</th>
+  　      <th></th>
+  　    </tr>
+  　  </thead>
+
+  　  <tbody>
+  　    <tr>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+  　      <td><%= user.name %></td>
+  　      <td><%= link_to "show", user_path(user.id) %></td>
+  　    </tr>
+  　  </tbody>
+  　</table>
+  　<% end %>
+  </div>
+</div>

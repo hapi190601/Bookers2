@@ -1,23 +1,29 @@
 <!--ここに共通部分が入る-->
+<div class="forflex">
 
-<h1>Books</h1>
+  <div class="left">
+    <%= render 'users/template', book: @book ,user: @user %>
+  </div>
 
-  <% @books.each do |book| %>
-　<table>
-　  <thead>
-　    <tr>
-　      <th>あ</th>
-　      <th>Title</th>
-　      <th>Opinion</th>
-　    </tr>
-　  </thead>
-
-　  <tbody>
-　    <tr>
-　      <td>あ</td>
-　      <td><%= book.title %></td>
-　      <td><%= book.body %></td>
-　    </tr>
-　  </tbody>
-　</table>
-　<% end %>
+  <div class="right">
+    <h1>Books</h1>
+    <% @books.each do |book| %>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= link_to (attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg") , user_path(book.id) %></td>
+          <td><%= link_to book.title, book_path(book.id) %></td>
+          <td><%= book.body %></td>
+        </tr>
+      </tbody>
+    </table>
+  　<% end %>
+  </div>
+</div>
