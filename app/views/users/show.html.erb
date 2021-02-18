@@ -1,3 +1,35 @@
-<%= render 'users/left_common_menu', book: @book %>
+<div class="forflex">
 
-<h1><%= @user.name %>のユーザーページ</h1>
+  <div class="left">
+    <%= render 'users/left_common_menu', book: @book ,user: @user %>
+  </div>
+
+
+  <div class=right>
+    <div class="show">
+      <h2>Books</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th> </th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!--ここに自分のアイコン写真-->
+            <td></td>
+            <!--ここに本のタイトル-->
+            <td></td>
+            <!--ここに本の感想-->
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>

@@ -1,5 +1,4 @@
-<%= render 'users/left_common_menu', book: @book %>
-
+<!-- 共通部分の読み込み入れる(現在エラー中)-->
 
 <h1>Users</h1>
 
@@ -15,7 +14,7 @@
 
 　  <tbody>
 　    <tr>
-　      <td><%= attachment_image_tag user, :Profile_image_id, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+        <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
 　      <td><%= user.name %></td>
 　      <td><%= link_to "show", user_path(user.id) %></td>
 　    </tr>

@@ -23,8 +23,6 @@
   box-sizing: border-box;
 }
 
-
-
 .nav-item {
   padding: 4px 0;
 }
@@ -33,3 +31,32 @@
 .nav-link:hover {
   opacity: 0.6;
 }
+
+
+
+// Bootstrap適用までの仮CSS
+// ここから
+
+.forflex {
+  display: flex;
+  justify-content: center;
+}
+
+.left {
+  width: 35%;
+  margin: 0 auto;
+}
+
+.right {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.user-show {
+  width: 70%;
+  margin: 0 auto;
+}
+
+
+
+// ここまで
