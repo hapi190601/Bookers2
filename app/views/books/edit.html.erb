@@ -1,28 +1,44 @@
-<h2>Editing Book</h2>
-
-<% if @book.errors.any? %>
-  <p><%= pluralize(@book.errors.count, "error") %>  prohibited this book from being saved:</p>
-  <ul>
-  <% @book.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model:@book, local:true do |f| %>
-  <div class="form">
-    <label for="inputTitle">Title</label>
-    <br>
-    <%= f.text_field :title, autofocus: true; %>
+<main>
+  <div class="error-box">
+    <% if @book.errors.any? %>
+      <h3 class="red-message "><%= pluralize(@book.errors.count, "error") %>  prohibited this book from being saved:</h3>
+        <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li class="red-message"><%= message %></li>
+        <% end %>
+        </ul>
+    <% end %>
   </div>
 
-  <div class="form">
-    <label for="inputOpinion">Opinion</label>
-    <br>
-    <%= f.text_area :body, autofocus: true; %>
-  </div>
-  <br>
-  <%= f.submit " Update Book " %>
-<% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h1>Editing Book</h1>
+        <%= form_with model:@book, local:true do |f| %>
+          <div class="form-group">
+            <label for="inputTitle">Title</label>
+            <br>
+            <%= f.text_field :title, autofocus: true , :class=>"form-control" %>
+          </div>
 
-<%= link_to "Show" , book_path(@book.id) %> | <%= link_to "Back" , books_path %>
+          <div class="form-group">
+            <label for="inputOpinion">Opinion</label>
+            <br>
+            <%= f.text_area :body, autofocus: true , :class=>"form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit " Update Book " , :class=>"btn btn-success"%>
+          </div>
+        <% end %>
+
+        <%= link_to "Show" , book_path(@book.id) %> | <%= link_to "Back" , books_path %>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+
+

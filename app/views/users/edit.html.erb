@@ -1,33 +1,52 @@
-<h2>User info</h2>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h2>User info</h2>
 
-<% if @user.errors.any? %>
-  <p><%= pluralize(@user.errors.count, "error") %>  prohibited this book from being saved:</p>
-  <ul>
-  <% @user.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-  </ul>
-<% end %>
+        <div class="error-box">
+          <% if @user.errors.any? %>
+              <h3 class="red-message "><%= pluralize(@user.errors.count, "error") %>  prohibited this book from being saved:</h3>
+              <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li class="red-message"><%= message %></li>
+              <% end %>
+              </ul>
+          <% end %>
+        </div>
 
-<%= form_with model:@user, local:true do |f| %>
-  <div class="form">
-    <label for="inputName">Name</label>
-    <br>
-    <%= f.text_field :name, autofocus: true; %>
+        <%= form_with model:@user, local:true do |f| %>
+          <div class="form-group">
+            <label for="inputName">Name</label>
+            <br>
+            <%= f.text_field :name, autofocus: true , :class=>"form-control"%>
+          </div>
+
+          <div class="form-group">
+            <label for="inputImage">Image</label>
+            <br>
+            <%= f.attachment_field :profile_image %>
+          </div>
+
+          <div class="form-group">
+            <label for="inputIntroduction">Introduction</label>
+            <br>
+            <%= f.text_area :introduction , :class=>"form-control" %>
+          </div>
+
+          <%= f.submit " Update User " , :class=>"btn btn-secondary" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <div class="form">
-    <label for="inputImage">Image</label>
-    <br>
-    <%= f.attachment_field :profile_image %>
-  </div>
+</main>
 
-  <div class="form">
-    <label for="inputIntroduction">Introduction</label>
-    <br>
-    <%= f.text_area :introduction %>
-  </div>
 
-  <br>
-  <%= f.submit " Update User " %>
-<% end %>
+
+
+
+
+
+
+

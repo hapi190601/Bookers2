@@ -1,31 +1,36 @@
-<div class="forflex">
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <%= render 'users/template', book: @book_new , user: @user %>
+      </div>
 
-  <div class="left">
-    <%= render 'users/template', book: @book_new , user: @user %>
+      <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to (attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" , size:"40x40"), user_path(@user.id) %>
+                <br>
+                <%= link_to @user.name, user_path(@user.id) %>
+              </td>
+
+              <td><%= @book.title %></td>
+              <td><%= @book.body %></td>
+              <% if @book.user == current_user %>
+              <td><%= link_to "Edit", edit_book_path , class:"btn btn-sm btn-success" %></td>
+              <td><%= link_to "Destroy", book_path(@book.id), method: :delete , data: {confirm: "本当に消しますか？"} , class:"btn btn-sm btn-danger" %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
+</main>
 
-  <div class="right">
-    <h1>Book detail</h1>
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <%= link_to (attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"), user_path(@user.id) %>
-            <br>
-            <%= link_to @user.name, user_path(@user.id) %>
-          </td>
 
-          <td><%= @book.title %></td>
-          <td><%= @book.body %></td>
-          <% if @book.user == current_user %>
-          <td><%= link_to "Edit", edit_book_path %></td>
-          <td><%= link_to "Destroy", book_path(@book.id), method: :delete , data: {confirm: "本当に消しますか？"} %></td>
-          <% end %>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-</div>
 
 

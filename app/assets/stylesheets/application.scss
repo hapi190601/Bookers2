@@ -23,39 +23,53 @@
   box-sizing: border-box;
 }
 
+main {
+  margin-top: 15px;
+}
+
+.field , .actions {
+  margin-bottom: 10px;
+}
+
 .nav-item {
   padding: 4px 0;
 }
-
 
 .nav-link:hover {
   opacity: 0.6;
 }
 
-
-// Bootstrap適用までの仮CSS
-// ここから
-
-.forflex {
-  display: flex;
-  justify-content: center;
+.btn-block {
+  display: block;
+  width: 100%;
 }
 
-.left {
-  width: 35%;
-  margin: 0 auto;
+.btn-info {
+  color: white !important;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
 }
 
-.right {
-  width: 50%;
-  margin: 0 auto;
+.btn-success {
+  color: white !important;
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
-.user-show {
-  width: 70%;
-  margin: 0 auto;
+.btn-primmary {
+  color: white;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
+.error-box {
+  margin-left: 30px;
+}
 
+.red-message {
+  color: red;
+}
 
-// ここまで
+.error-box > ul {
+  padding-left: 40px;
+}
