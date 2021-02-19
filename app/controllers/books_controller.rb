@@ -6,16 +6,28 @@ class BooksController < ApplicationController
     redirect_to user_session_path unless user_signed_in?
   end
 
+
   def new
     @book = Book.new
   end
 
+
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
-    redirect_to book_path(@book.id)
+    # render用定義①
+    @books = Book.all
+    # render用定義②
+    @user = User.find(current_user.id)
+
+    if @book.save
+      flash[:notice] = "You have created book successfully."
+      redirect_to book_path(@book.id)
+    else
+      render :index
+    end
   end
+
 
   def index
     @books = Book.all
@@ -23,21 +35,34 @@ class BooksController < ApplicationController
     @user = User.find(current_user.id)
   end
 
+
   def show
     @book = Book.find(params[:id])
     @book_new = Book.new
     @user = @book.user
   end
 
+
   def edit
     @book = Book.find(params[:id])
+    if @book.user == current_user
+      render "edit"
+    else
+      redirect_to books_path
+    end
   end
+
 
   def update
     @book = Book.find(params[:id])
-    @book.update(book_params)
-    redirect_to book_path(@book.id)
+    if @book.update(book_params)
+      flash[:notice] = "You have updated book successfully."
+      redirect_to book_path(@book.id)
+    else
+      render :edit
+    end
   end
+
 
   def destroy
     @book = Book.find(params[:id])
@@ -45,6 +70,7 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_path
   end
+
 
   # ストロングパラメータ
   private
