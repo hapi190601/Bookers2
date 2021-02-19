@@ -1,5 +1,11 @@
 class BooksController < ApplicationController
 
+  before_action :authenticate
+
+  def authenticate
+    redirect_to user_session_path unless user_signed_in?
+  end
+
   def new
     @book = Book.new
   end
@@ -13,11 +19,13 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @book = Book.new
     @user = User.find(current_user.id)
   end
 
   def show
     @book = Book.find(params[:id])
+    @book_new = Book.new
     @user = @book.user
   end
 
@@ -42,7 +50,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.permit(:title, :body, :user_id)
+    params.require(:book).permit(:title, :body)
   end
 
 end

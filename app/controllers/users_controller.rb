@@ -1,12 +1,21 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate
+
+  def authenticate
+    redirect_to user_session_path unless user_signed_in?
+  end
+
   def index
     @users = User.all
     @user = User.find(current_user.id)
+    @book = Book.new
   end
 
   def show
     @user = User.find(params[:id])
+    @book = Book.new
+    @books = @user.books
   end
 
   def edit

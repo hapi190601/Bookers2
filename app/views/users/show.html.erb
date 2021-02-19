@@ -9,24 +9,27 @@
     <div class="show">
       <h2>Books</h2>
 
-      <table>
+      <table class="table-hover">
         <thead>
           <tr>
-            <th> </th>
+            <th>  </th>
             <th>Title</th>
             <th>Opinion</th>
           </tr>
         </thead>
+
+        <% @books.each do |book| %>
         <tbody>
           <tr>
-            <!--ここに自分のアイコン写真-->
-            <td></td>
-            <!--ここに本のタイトル-->
-            <td></td>
-            <!--ここに本の感想-->
-            <td></td>
+            <!--アイコン写真-->
+            <td><%= attachment_image_tag @user, :profile_image , :fill, 30, 30 %></td>
+            <!--本のタイトル-->
+            <td><%= link_to book.title, book_path(book.id) %></td>
+            <!--本の感想-->
+            <td><%= book.body %> </td>
           </tr>
         </tbody>
+        <% end %>
       </table>
     </div>
 
