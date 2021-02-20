@@ -12,12 +12,14 @@
           <tbody>
             <tr>
               <td>
-                <%= link_to (attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" , size:"40x40"), user_path(@user.id) %>
-                <br>
-                <%= link_to @user.name, user_path(@user.id) %>
+                <%= link_to user_path(@user.id) do %>
+                  <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" , size:"40x40" %>
+                  <br>
+                  <%= @user.name %>
+                <% end %>
               </td>
 
-              <td><%= @book.title %></td>
+              <td><%= link_to @book.title , book_path(@book.id) %></td>
               <td><%= @book.body %></td>
               <% if @book.user == current_user %>
               <td><%= link_to "Edit", edit_book_path , class:"btn btn-sm btn-success" %></td>
