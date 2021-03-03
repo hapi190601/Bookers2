@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate
-
-  def authenticate
-    redirect_to user_session_path unless user_signed_in?
-  end
+  before_action :authenticate_user!
 
   def index
     @users = User.all

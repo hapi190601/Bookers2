@@ -1,11 +1,6 @@
 class BooksController < ApplicationController
 
-  before_action :authenticate
-
-  def authenticate
-    redirect_to user_session_path unless user_signed_in?
-  end
-
+  before_action :authenticate_user!
 
   def new
     @book = Book.new
@@ -38,8 +33,10 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @book_comment = BookComment.new
     @book_new = Book.new
     @user = @book.user
+
   end
 
 
