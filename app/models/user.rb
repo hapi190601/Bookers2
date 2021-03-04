@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :followed
 
 
-  # フォローされるユーザー
+  # 自分がフォローされているユーザー
   has_many :passive_relationships,
                       class_name: "Relationship",
                       foreign_key: "followed_id",
@@ -29,16 +29,19 @@ class User < ApplicationRecord
   # 自分をフォローしているユーザー
   has_many :followers, through: :passive_relationships, source: :follower
 
+  # フォローする
   def follow(user_id)
-    follower.create(followed_id: user_id)
+    active_relationships.create(followed_id: user_id)
   end
-  
+
+  # フォローを外す
   def unfollow(user_id)
-    follower.find_by(followed_id: user_id).destroy
+    active_relationships.find_by(followed_id: user_id).destroy
   end
-  
+
+  # すでにフォローしているのか確認
   def following?(user)
-    following_user.include?(user)
+    followings.include?(user)
   end
 
 
