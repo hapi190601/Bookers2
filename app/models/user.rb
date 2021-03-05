@@ -11,22 +11,26 @@ class User < ApplicationRecord
 
 
   # フォローするユーザー
+  # フォローする側のUserから見て(foreign_keyの設定)、フォローされる側のUserを(中間テーブルを介して)集める。
   has_many :active_relationships,
                       class_name: "Relationship",
                       foreign_key: "follower_id",
                       dependent: :destroy
 
   # 自分がフォローしているユーザー
+  # 中間テーブルを介して「followed」モデルのUser(フォローされた側)を集めることを「followings」と定義
   has_many :followings, through: :active_relationships, source: :followed
 
 
-  # 自分がフォローされているユーザー
+  # フォローされているユーザー
+  # フォローされる側のUserから見て(foreign_keyの設定)、フォローしてくる側のUserを(中間テーブルを介して)集める。
   has_many :passive_relationships,
                       class_name: "Relationship",
                       foreign_key: "followed_id",
                       dependent: :destroy
 
-  # 自分をフォローしているユーザー
+  # 自分がフォローされているユーザー
+  # 中間テーブルを介して「follower」モデルのUser(フォローする側)を集めることを「followers」と定義
   has_many :followers, through: :passive_relationships, source: :follower
 
   # フォローする
@@ -44,10 +48,8 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-
   validates :name, uniqueness: true , length: {in: 2..20}
   validates :introduction, length: { maximum: 50 }
-
 
   attachment :profile_image
 end
