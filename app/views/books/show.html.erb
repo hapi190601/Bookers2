@@ -59,7 +59,7 @@
                   <!--コメント者の写真と名前(リンク)-->
                   <td class="td">
                     <%= link_to user_path(comment.user_id) do %>
-                      <%= attachment_image_tag comment.user.profile_image, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" , size:"40x40" %>
+                      <%= attachment_image_tag comment.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:"40x40" %>
                       <br>
                       <%= comment.user.name %>
                     <% end %>

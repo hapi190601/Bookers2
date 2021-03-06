@@ -7,9 +7,7 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
-  has_many :relationships
-
-
+  # has_many :relationships
   # フォローするユーザー
   # フォローする側のUserから見て(foreign_keyの設定)、フォローされる側のUserを(中間テーブルを介して)集める。
   has_many :active_relationships,
