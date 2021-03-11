@@ -1,4 +1,5 @@
 <main>
+  <!--エラーメッセージ-->
   <div class="error-box">
     <% if @book.errors.any? %>
         <h3 class="red-message "><%= pluralize(@book.errors.count, "error") %>  prohibited this book from being saved:</h3>
