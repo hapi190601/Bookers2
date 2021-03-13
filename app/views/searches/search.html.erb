@@ -3,50 +3,50 @@
 <table class="table table-hover table-inverse">
   <% if @range == "User" %>
     <thead>
-       <tr>
+      <tr>
         <th>image</th>
         <th>name</th>
         <th colspan="3"></th>
-       </tr>
-     </thead>
+      </tr>
+    </thead>
 
-     <tbody>
+    <tbody>
       <% @users.each do |user| %>
-       <tr>
-        <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:"40x40" %></td>
-        <td><%= user.name %></td>
-        <td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
-       </tr>
+        <tr>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:"50x50" %></td>
+          <td><%= user.name %></td>
+          <td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
+        </tr>
       <% end %>
-     </tbody>
+    </tbody>
 
   <% else %>
 
   <!--books一覧 -->
-  <thead>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @books.each do |book| %>
+    <thead>
       <tr>
-      <td>
-        <%= link_to(book.user) do %>
-        <%= attachment_image_tag(book.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to book.title, book, class: "book_#{book.id}" %>
-      </td>
-      <td><%= book.body %></td>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td>
+            <%= link_to(book.user) do %>
+            <%= attachment_image_tag(book.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:"50x50" ) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to book.title, book, class: "book_#{book.id}" %>
+          </td>
+          <td><%= book.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
   <% end %>
 </table>
 
