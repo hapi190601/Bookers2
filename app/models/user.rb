@@ -61,8 +61,10 @@ class User < ApplicationRecord
     end
   end
 
+  # バリデーション
   validates :name, uniqueness: true , length: {in: 2..20}
   validates :introduction, length: { maximum: 50 }
 
+  # refile
   attachment :profile_image
 end

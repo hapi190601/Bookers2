@@ -1,8 +1,8 @@
 <div class="followed">
   <h2>Followers Users</h2>
 
-  <% if @users.count > 0 %>
   <table class="table">
+  <% if @users.count > 0 %>
     <thead>
       <tr>
         <th>image</th>
@@ -24,9 +24,8 @@
         </tr>
       <% end %>
     </tbody>
-  </table>
   <% else %>
-  <p>ユーザーはいません</p>
+   <p>ユーザーはいません</p>
   <% end %>
-
+  </table>
 </div>
