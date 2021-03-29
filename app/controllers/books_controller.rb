@@ -9,9 +9,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    # render用定義①
     @books = Book.all
-    # render用定義②
     @user = User.find(current_user.id)
 
     if @book.save
@@ -67,5 +65,4 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-
 end
