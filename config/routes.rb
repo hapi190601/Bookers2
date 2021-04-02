@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
   get 'favorites/create'
   get 'favorites/destroy'
-  devise_for :users, controllers: {registrations: 'users/registrations', sessions: 'users/sessions' }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
 
   root to: "homes#top"
   get "home/about" => "homes#about"
-
   get "search" => "searches#search"
 
   resources :users, only: [:index, :show, :edit, :update] do
-    resource :relationships, only: [:create, :destroy,]
+    resource :relationships, only: [:create, :destroy]
     get "follower" => "relationships#follower"
     get "followd" => "relationships#followed"
   end
